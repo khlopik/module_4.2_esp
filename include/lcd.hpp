@@ -21,6 +21,7 @@ namespace lcd
         Red,
         Green,
         Blue,
+        Unknown,
     };
 
     class LcdHandle

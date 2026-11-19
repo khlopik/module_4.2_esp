@@ -24,6 +24,16 @@ namespace uart
         ESP_ERROR_CHECK(uart_set_pin(UART_NUM_2, txPin, rxPin, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
 
         messageQueue_ = xQueueCreate(QUEUE_LENGTH, sizeof(RxCommand));
+
+        if (xTaskCreate(checkMessagesTask, "Check messages", 2048, this, 2, NULL) != pdPASS)
+        {
+            abort();
+        }
+
+        if (xTaskCreate(sendMessagesTask, "Send messages", 2048, this, 3, NULL) != pdPASS)
+        {
+            abort();
+        }
     }
 
     void UartHandler::checkMessagesTask(void *pvParams)
