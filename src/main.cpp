@@ -18,7 +18,7 @@ namespace
 
     uint8_t convertRGBValueToBarHeight(uint8_t value)
     {
-        return value * lcdConfig::maxBarHeight / 255; // 255 is max color value
+        return value * lcdConfig::maxBarHeight / ledConfig::maxColorValue;
     }
 
     void onSTMCommand(uart::RxCommand cmd)

@@ -25,6 +25,11 @@ namespace i2cConfig
     constexpr uint32_t clockSpeedHz = 400 * 1000;
 }
 
+namespace ledConfig
+{
+    constexpr uint8_t maxColorValue = 255;
+}
+
 namespace lcdConfig
 {  
     constexpr uint8_t i2cAddress = 0x3C;
